@@ -9,12 +9,15 @@ namespace hanyeah.electricity.elecData {
     public connLN: ListNode;
     public connUFS: UnionFindSet;
     public worldLN: ListNode;
+    public graphUFS: UnionFindSet;
     public world: World;
+    public index: number;
     constructor(world: World) {
       super();
       this.connLN = new ListNode(this);
       this.connUFS = new UnionFindSet(this);
       this.worldLN = new ListNode(this);
+      this.graphUFS = new UnionFindSet(this);
       this.world = world;
       world.addVertex(this);
     }
@@ -27,6 +30,8 @@ namespace hanyeah.electricity.elecData {
       this.connLN = null;
       this.connUFS.destroy();
       this.connUFS = null;
+      this.graphUFS.destroy();
+      this.graphUFS = null;
       this.worldLN.destroy();
       this.worldLN = null;
     }

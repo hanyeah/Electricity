@@ -3,8 +3,17 @@
  */
 namespace hanyeah.electricity.elecData{
   export class Graph extends HObject{
+    public edges: Edge[] = [];
+    public vertexs: Vertex[] = [];
+    public vn: number = 0;
     constructor() {
       super();
+    }
+
+    addVertex(vertex: Vertex): void {
+      this.vertexs[this.vn] = vertex;
+      vertex.index = this.vn;
+      this.vn++;
     }
   }
 }

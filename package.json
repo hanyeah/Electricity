@@ -1,9 +1,9 @@
 {
   "name": "Electricity-Engine",
-  "main": "Electricity.js",
+  "main": "./lib/Electricity.js",
   "version": "0.0.0",
   "description": "hanyeah's electricity engine",
-  "typings": "index.d.ts",
+  "typings": "./lib/Electricity.d.ts",
   "author": "hanyeah <hanlidong@yeah.net> (http://hanyeah.com)",
   "scripts": {
     "start": "npm run build && npm run server",
@@ -11,6 +11,6 @@
     "server": "cd ./lib && live-server"
   },
   "dependencies": {
-    "MatrixMath": "git+ssh://git@github.com:hanyeah/MatrixMath.git"
+    "MatrixMath": "git+ssh://git@github.com/hanyeah/MatrixMath.git"
   }
 }

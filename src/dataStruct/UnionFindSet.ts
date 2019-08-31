@@ -14,6 +14,8 @@ namespace hanyeah.dataStruct {
 
     public userData: object;
 
+    public index: number = -1;
+
     private _root: UnionFindSet;
 
     constructor(userData) {

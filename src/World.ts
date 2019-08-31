@@ -5,9 +5,9 @@ namespace hanyeah.electricity {
   import Vertex = hanyeah.electricity.elecData.Vertex;
   import Edge = hanyeah.electricity.elecData.Edge;
   import List = hanyeah.dataStruct.List;
-  import ListNode = hanyeah.dataStruct.ListNode;
   export class World extends HObject {
 
+    public calculater: Calculater = new Calculater();
     private vertexList: List = new List();
     private edgeList: List = new List();
 
@@ -16,7 +16,11 @@ namespace hanyeah.electricity {
     }
 
     public destroy(): void {
-
+      this.vertexList.destroy();
+      this.vertexList = null;
+      this.edgeList.destroy();
+      this.edgeList = null;
+      this.calculater = null;
     }
 
     public addVertex(vertex: Vertex): void {
@@ -41,6 +45,10 @@ namespace hanyeah.electricity {
 
     public getEdges(): Edge[] {
       return this.edgeList.getAllUserData() as Edge[];
+    }
+
+    calculate(): void{
+      this.calculater.calculate(this.getEdges(), this.getVertexs());
     }
 
   }
