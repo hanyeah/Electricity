@@ -9,6 +9,7 @@ namespace hanyeah.electricity{
   import UnionFindSet = hanyeah.dataStruct.UnionFindSet;
   import MatrixMath = hanyeah.MatrixMath;
   export class Calculater{
+    public traceFlag: boolean = false;
     constructor() {
 
     }
@@ -23,10 +24,14 @@ namespace hanyeah.electricity{
         vertex = vertexs[i];
         vertex.graphUFS.root = (vertex.connUFS.root.userData as Vertex).graphUFS;
         vertex.graphUFS.index = -1;
+        vertex.connUFS.index = -1;
+        vertex.U = 0;
       }
       // 回路并查
       for (let i: number = 0; i < en; i++){
         edge = edges[i];
+        edge.U = 0;
+        edge.I = 0;
         if (edge.isBreak){
           continue;
         }
@@ -54,12 +59,20 @@ namespace hanyeah.electricity{
       }
       for (let i: number = 0; i < vn; i++) {
         vertex = vertexs[i];
-        graph = graphs[vertex.graphUFS.root.index];
-        graph.addVertex(vertex);
+        if (vertex.connUFS.root.index === -1) {
+          graph = graphs[vertex.graphUFS.root.index];
+          graph.vertexs.push(vertex.connUFS.root.userData as Vertex);
+          vertex.connUFS.root.index = graph.vn;
+          graph.vn++;
+        }
       }
       // 计算
       for (let i: number = 0; i < n; i++) {
         this.solveGraph(graphs[i]);
+      }
+      for (let i: number = 0; i < vn; i++) {
+        vertex = vertexs[i];
+        vertex.U = (vertex.connUFS.root.userData as Vertex).U;
       }
     }
 
@@ -79,8 +92,8 @@ namespace hanyeah.electricity{
       let ni: number;
       for (let i: number = 0; i < cols; i++) {
         edge = edges[i];
-        r0 = edge.vertex0.index;
-        r1 = edge.vertex1.index;
+        r0 = edge.vertex0.connUFS.root.index;
+        r1 = edge.vertex1.connUFS.root.index;
         ri = rows + i;
         ni = n0 + i;
         // A
@@ -108,23 +121,25 @@ namespace hanyeah.electricity{
         // Us + Is
         Y.setElement(ni, 0, edge.SU + edge.SI);
       }
-      console.log("M:");
-      MatrixMath.traceMatrix(M);
-      console.log("Y:");
-      MatrixMath.traceMatrix(Y);
       const X: MatrixMath = MatrixMath.GaussSolution(M, Y);
-      console.log("x:");
-      MatrixMath.traceMatrix(X);
       // 给边和节点设置计算好的电流电压。
       let vertex: Vertex;
       for (let i: number = 0; i <= rows; i++) {
         vertex = vertexs[i];
-        vertex.U = X.getElement(vertex.index, 0);
+        vertex.U = X.getElement(vertex.connUFS.index, 0);
       }
       for (let i: number = 0; i < cols; i++) {
         edge = edges[i];
         edge.U = X.getElement(rows + i, 0);
         edge.I = X.getElement(n0 + i, 0);
+      }
+      if (this.traceFlag) {
+        console.log("M:");
+        MatrixMath.traceMatrix(M);
+        console.log("Y:");
+        MatrixMath.traceMatrix(Y);
+        console.log("x:");
+        MatrixMath.traceMatrix(X);
       }
     }
   }

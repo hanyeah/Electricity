@@ -11,7 +11,6 @@ namespace hanyeah.electricity.elecData {
     public worldLN: ListNode;
     public graphUFS: UnionFindSet;
     public world: World;
-    public index: number;
     constructor(world: World) {
       super();
       this.connLN = new ListNode(this);

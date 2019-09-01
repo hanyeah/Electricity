@@ -42,11 +42,11 @@ namespace hanyeah.dataStruct {
         this.changed = false;
         this.nodes = [];
         this.userDatas = [];
-        let node: ListNode = this.guard.next;
+        let node: ListNode = this.guard.prev;
         while (node !== this.guard){
           this.nodes.push(node);
           this.userDatas.push(node.userData);
-          node = node.next;
+          node = node.prev;
         }
       }
     }

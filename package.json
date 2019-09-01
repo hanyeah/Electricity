@@ -7,8 +7,8 @@
   "author": "hanyeah <hanlidong@yeah.net> (http://hanyeah.com)",
   "scripts": {
     "start": "npm run build && npm run server",
-    "build": "tsc-plus --reorderFiles",
-    "server": "cd ./lib && live-server"
+    "build": "tsc-plus --reorderFiles && node ./scripts/build.js",
+    "server": "cd ./dist && live-server"
   },
   "dependencies": {
     "MatrixMath": "git+ssh://git@github.com/hanyeah/MatrixMath.git"

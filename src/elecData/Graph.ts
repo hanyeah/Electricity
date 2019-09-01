@@ -9,11 +9,5 @@ namespace hanyeah.electricity.elecData{
     constructor() {
       super();
     }
-
-    addVertex(vertex: Vertex): void {
-      this.vertexs[this.vn] = vertex;
-      vertex.index = this.vn;
-      this.vn++;
-    }
   }
 }

@@ -86,7 +86,6 @@ declare namespace hanyeah.electricity.elecData {
         vertexs: Vertex[];
         vn: number;
         constructor();
-        addVertex(vertex: Vertex): void;
     }
 }
 /**
@@ -102,7 +101,6 @@ declare namespace hanyeah.electricity.elecData {
         worldLN: ListNode;
         graphUFS: UnionFindSet;
         world: World;
-        index: number;
         constructor(world: World);
         destroy(): void;
         connect(vertex: Vertex): void;
@@ -117,6 +115,7 @@ declare namespace hanyeah.electricity {
     import Vertex = hanyeah.electricity.elecData.Vertex;
     import Graph = hanyeah.electricity.elecData.Graph;
     class Calculater {
+        traceFlag: boolean;
         constructor();
         calculate(edges: Edge[], vertexs: Vertex[]): void;
         solveGraph(graph: Graph): void;
