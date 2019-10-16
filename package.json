@@ -1,7 +1,7 @@
 {
   "name": "Electricity",
   "main": "./lib/Electricity.js",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "hanyeah's electricity engine",
   "typings": "./lib/Electricity.d.ts",
   "author": "hanyeah <hanlidong@yeah.net> (http://hanyeah.com)",
