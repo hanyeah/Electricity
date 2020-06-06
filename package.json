@@ -10,7 +10,7 @@
     "copylibs": "node ./scripts/copylibs.js",
     "start": "npm run build && npm run server",
     "build": "tsc-plus --reorderFiles && node ./scripts/build.js",
-    "server": "cd ./dist && live-server"
+    "server": "cd ./test && live-server"
   },
   "dependencies": {
     "MatrixMath": "git+ssh://git@github.com/hanyeah/MatrixMath.git"
