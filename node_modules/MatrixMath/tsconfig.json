@@ -5,7 +5,7 @@
     "sourceMap": false,
     "declaration": true,
     "experimentalDecorators": true,
-    "outFile": "lib/MatrixMath.js",
+    "outFile": "dist/MatrixMath.js",
     "reorderFiles": true
   },
   "include": [

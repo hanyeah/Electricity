@@ -6,6 +6,8 @@
   "typings": "./lib/Electricity.d.ts",
   "author": "hanyeah <hanlidong@yeah.net> (http://hanyeah.com)",
   "scripts": {
+    "init": "npm install && npm run copylibs",
+    "copylibs": "node ./scripts/copylibs.js",
     "start": "npm run build && npm run server",
     "build": "tsc-plus --reorderFiles && node ./scripts/build.js",
     "server": "cd ./dist && live-server"

@@ -52,8 +52,8 @@ namespace hanyeah.electricity {
       return this.edgeList.getAllUserData() as Edge[];
     }
 
-    calculate(): void{
-      if (this.dirty){
+    public calculate(force: boolean = false): void{
+      if (force || this.dirty){
         this.calculater.calculate(this.getEdges(), this.getVertexs());
         this.dirty = false;
       }
