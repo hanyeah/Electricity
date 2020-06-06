@@ -13,6 +13,8 @@
     "server": "cd ./test && live-server"
   },
   "dependencies": {
+  },
+  "devDependencies": {
     "MatrixMath": "git+ssh://git@github.com/hanyeah/MatrixMath.git"
   }
 }
